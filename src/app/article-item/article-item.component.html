@@ -7,10 +7,10 @@
   </div>
 
   <div class="container-buttons" *ngIf="article.isOnSales">
-    <button (click) = "subtractQuantity()" 
-    [disabled] ="isSubtractDisabled" 
-    [class.disabled-button] ="isSubtractDisabled">-</button>
+    <button (click) = "onArticleQuantityChange('subtract')" 
+    [disabled] ="article.isSubtractDisabled" 
+    [class.disabled-button] = "article.isSubtractDisabled">-</button>
     <p>{{ article.quantityInChart }}</p>
-    <button (click) = "addQuantity()">+</button>
+    <button (click) = "onArticleQuantityChange('add')">+</button>
   </div>
 </div>
