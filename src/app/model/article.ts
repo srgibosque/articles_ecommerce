@@ -4,5 +4,6 @@ export class Article {
     public imageUrl: string,
     public price: number,
     public isOnSales: boolean,
-    public quantityInChart: number) {}
+    public quantityInChart: number,
+    public isSubtractDisabled: boolean = false) {}
 }

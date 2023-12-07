@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Article } from '../../app/model/article';
 
 @Component({
@@ -8,13 +8,12 @@ import { Article } from '../../app/model/article';
 })
 
 export class ArticleItemComponent implements OnInit {
-  public article!: Article;
+  @Input() public article!: Article;
   public isSubtractDisabled: boolean = false;
 
   constructor() {}
 
   ngOnInit(){
-    this.article = new Article('Beige Chair', '../../assets/ChairBeige.jpg', 8.99, false, 3);
     this.updateSubtractButtonState();
   }
 
