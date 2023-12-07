@@ -1,0 +1,16 @@
+<div class="container-article" [class]="article.isOnSales ? 'container-article' : 'container-article-noStock'">
+  <img src="{{article.imageUrl}}" alt="image">
+
+  <div class="container-info">
+    <p class="name">{{ article.name }}</p>
+    <p>{{ article.price }} €</p>
+  </div>
+
+  <div class="container-buttons">
+    <button (click) = "subtractQuantity()" 
+    [disabled] ="isSubtractDisabled" 
+    [class.disabled-button] ="isSubtractDisabled">-</button>
+    <p>{{ article.quantityInChart }}</p>
+    <button (click) = "addQuantity()">+</button>
+  </div>
+</div>
