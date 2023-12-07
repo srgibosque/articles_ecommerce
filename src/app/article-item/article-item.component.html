@@ -3,10 +3,10 @@
 
   <div class="container-info">
     <p class="name">{{ article.name }}</p>
-    <p>{{ article.price }} €</p>
+    <p [ngClass] = "{'not-on-sale': !article.isOnSales}">{{ article.price }} €</p>
   </div>
 
-  <div class="container-buttons">
+  <div class="container-buttons" *ngIf="article.isOnSales">
     <button (click) = "subtractQuantity()" 
     [disabled] ="isSubtractDisabled" 
     [class.disabled-button] ="isSubtractDisabled">-</button>

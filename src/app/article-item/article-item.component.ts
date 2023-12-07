@@ -14,7 +14,7 @@ export class ArticleItemComponent implements OnInit {
   constructor() {}
 
   ngOnInit(){
-    this.article = new Article('Beige Chair', '../../assets/ChairBeige.jpg', 8.99, true, 3);
+    this.article = new Article('Beige Chair', '../../assets/ChairBeige.jpg', 8.99, false, 3);
     this.updateSubtractButtonState();
   }
 

@@ -52,3 +52,7 @@ button:active{
   padding: 0 16px;
   
 }
+
+.not-on-sale{
+  color: lightgray;
+}
