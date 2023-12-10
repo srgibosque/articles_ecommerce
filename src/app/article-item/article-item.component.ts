@@ -1,10 +1,11 @@
-import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output, ChangeDetectionStrategy } from '@angular/core';
 import { Article } from '../../app/model/article';
 
 @Component({
   selector: 'app-article-item',
   templateUrl: './article-item.component.html',
-  styleUrl: './article-item.component.css'
+  styleUrl: './article-item.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 
 export class ArticleItemComponent implements OnInit {
