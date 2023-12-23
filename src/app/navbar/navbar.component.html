@@ -1,0 +1,26 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <li class="nav-item nav-link" (click)="showComponent('inicio')">Inicio</li>
+      <li class="nav-item nav-link" (click)="showComponent('articulos')">Artículos</li>
+      <li class="nav-item nav-link" (click)="showComponent('nuevo-articulo-template')">Nuevo artículo template</li>
+      <li class="nav-item nav-link" (click)="showComponent('nuevo-articulo-reactivo')">Nuevo artículo reactivo</li>
+    </ul>   
+  </div>
+</nav>
+
+<div *ngIf="showInicio">
+  <app-article-list></app-article-list>
+</div>
+
+<div *ngIf="showArticulos">
+  <app-article-list></app-article-list>
+</div>
+
+<div *ngIf="showNuevoArticuloTemplate">
+  <app-article-new-reactive></app-article-new-reactive>
+</div>
+
+<div *ngIf="showNuevoArticuloReactivo">
+  <app-article-new-template></app-article-new-template>
+</div>
