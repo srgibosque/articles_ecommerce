@@ -4,7 +4,7 @@ export class Article {
     public imageUrl: string,
     public price: number,
     public isOnSales: boolean,
-    public quantityInChart: number,
-    public id: number,
+    public quantityInChart?: number,
+    public id?: number,
     public isSubtractDisabled: boolean = false) {}
 }

@@ -1,1 +1,46 @@
-<p>article-new-template works!</p>
+<h2>Create Furniture</h2>
+
+<form (ngSubmit)="createArticle(articleForm)" #articleForm="ngForm">
+  <div ngModelGroup="article">
+    
+    <div class="article-name">
+      <input type="text" placeholder="Name" id="name" name="articleName" ngModel required #articleName="ngModel">
+
+      <div *ngIf="articleName.dirty && articleName.invalid">
+        <div *ngIf="articleName.errors && articleName.errors['required']">
+          Name is a mandatory field
+        </div>
+      </div>
+    </div>
+  
+    <div class="article-price">
+      <input type="number" placeholder="Price" id="price" name="articlePrice" ngModel required #articlePrice="ngModel">
+  
+      <div *ngIf="articlePrice.dirty && articlePrice.invalid">
+        <div *ngIf="articlePrice.errors && articlePrice.errors['required']">
+          Price is a mandatory field
+        </div>
+      </div>
+    </div>
+  
+    <div class="article-image-url">
+      <input type="text" placeholder="Image URL" id="imageUrl" name="articleImageURL" ngModel required #articleImageUrl="ngModel" [pattern]="imageUrlPattern">
+
+      <div *ngIf="articleImageUrl.dirty && articleImageUrl.invalid">
+        <div *ngIf="articleImageUrl.errors && articleImageUrl.errors['required']">
+          Image URL is a mandatory field
+        </div>
+        <div *ngIf="articleImageUrl.errors && articleImageUrl.errors['pattern']">
+          Please enter a valid Image URL
+        </div>
+      </div>
+    </div>
+  
+    <div class="article-isOnSale">
+      <label for="isOnSale">Is On Sale:</label>
+      <input type="checkbox" id="isOnSale" name="articleIsOnSale" ngModel>
+    </div>
+
+  </div>
+  <button type="submit">Submit</button>
+</form>
