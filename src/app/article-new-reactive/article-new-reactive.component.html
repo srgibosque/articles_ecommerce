@@ -1,1 +1,61 @@
-<p>article-new-reactive works!</p>
+<h2>Create furniture</h2>
+
+<div class="form-group">
+  <form [formGroup]="articleForm" (ngSubmit)="onSubmit()">
+    <div class="article-name">
+      <input type="text"
+             placeholder="Name"
+             name="name"
+             formControlName="name">
+      <div *ngIf="name?.invalid && (name?.dirty || name?.touched)">
+        <div *ngIf="name && name.hasError('required')">
+          Name is required
+        </div>
+        <div *ngIf="name && name.hasError('invalidName')">
+          Name cannot be Prova, Mock, Test or Fake
+        </div>
+      </div>
+    </div>
+  
+    <div class="article-price">
+      <input type="number"
+             placeholder="Price"
+             name="price"
+             formControlName="price">
+      <div *ngIf="price?.invalid && (price?.dirty || price?.touched)">
+        <div *ngIf="price && price.hasError('required')">
+          Price is required
+        </div>
+        <div *ngIf="price && price.hasError('min')">
+          Price must be at least 0,1€
+        </div>
+      </div>
+    </div>
+  
+    <div class="article-imageUrl">
+      <input type="text"
+             placeholder="Image URL"
+             name="imageUrl"
+             formControlName="imageUrl">
+      <div *ngIf="imageUrl?.invalid && (imageUrl?.dirty || imageUrl?.touched)">
+        <div *ngIf="imageUrl && imageUrl.hasError('required')">
+          Image Url is required
+        </div>
+        <div *ngIf="imageUrl && imageUrl.hasError('pattern')">
+          Image does not match the pattern
+        </div>
+      </div>
+    </div>
+  
+    <div class="article-isOnSale">
+      <label for="isOnSale">Is On Sale:</label>
+      <input type="checkbox"
+             id="isOnSale"
+             name="isOnSale"
+             formControlName="isOnSale">
+    </div>
+  
+  
+    <button type="submit">Submit</button>
+  </form>
+</div>
