@@ -34,7 +34,9 @@ export class ArticleNewReactiveComponent {
     if (this.articleForm.valid) {
       console.log('articleForm values:', this.articleForm.value);
     } else {
-      this.articleForm.markAllAsTouched();
+      this.name?.markAsDirty();
+      this.price?.markAsDirty();
+      this.imageUrl?.markAsDirty();
       console.error('Article form is in an invalid state');
     }
   }

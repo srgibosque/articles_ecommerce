@@ -1,47 +1,51 @@
-<h2>Create Furniture</h2>
+<div class="container mt-5">
 
-<form (ngSubmit)="createArticle(articleForm)" #articleForm="ngForm">
-  <div ngModelGroup="article">
+  <h2>Create Furniture</h2>
+  
+  <form (ngSubmit)="createArticle(articleForm)" #articleForm="ngForm">
+    <div ngModelGroup="article">
+      
+      <div class="mb-3">
+        <input type="text" class="form-control" placeholder="Name" id="name" name="articleName" ngModel required #articleName="ngModel">
+  
+        <div *ngIf="articleName.dirty && articleName.invalid">
+          <div *ngIf="articleName.errors && articleName.errors['required']" class="errorMessage">
+            Name is a mandatory field
+          </div>
+        </div>
+      </div>
     
-    <div class="article-name">
-      <input type="text" placeholder="Name" id="name" name="articleName" ngModel required #articleName="ngModel">
-
-      <div *ngIf="articleName.dirty && articleName.invalid">
-        <div *ngIf="articleName.errors && articleName.errors['required']">
-          Name is a mandatory field
+      <div class="mb-3">
+        <input type="number" class="form-control" placeholder="Price" id="price" name="articlePrice" ngModel required #articlePrice="ngModel">
+    
+        <div *ngIf="articlePrice.dirty && articlePrice.invalid">
+          <div *ngIf="articlePrice.errors && articlePrice.errors['required']" class="errorMessage">
+            Price is a mandatory field
+          </div>
         </div>
       </div>
-    </div>
+    
+      <div class="mb-3">
+        <input type="text" class="form-control" placeholder="Image URL" id="imageUrl" name="articleImageURL" ngModel required #articleImageUrl="ngModel" [pattern]="imageUrlPattern">
   
-    <div class="article-price">
-      <input type="number" placeholder="Price" id="price" name="articlePrice" ngModel required #articlePrice="ngModel">
-  
-      <div *ngIf="articlePrice.dirty && articlePrice.invalid">
-        <div *ngIf="articlePrice.errors && articlePrice.errors['required']">
-          Price is a mandatory field
+        <div *ngIf="articleImageUrl.dirty && articleImageUrl.invalid">
+          <div *ngIf="articleImageUrl.errors && articleImageUrl.errors['required']" class="errorMessage">
+            Image URL is a mandatory field
+          </div>
+          <div *ngIf="articleImageUrl.errors && articleImageUrl.errors['pattern']" class="errorMessage">
+            Please enter a valid Image URL
+          </div>
         </div>
       </div>
-    </div>
-  
-    <div class="article-image-url">
-      <input type="text" placeholder="Image URL" id="imageUrl" name="articleImageURL" ngModel required #articleImageUrl="ngModel" [pattern]="imageUrlPattern">
-
-      <div *ngIf="articleImageUrl.dirty && articleImageUrl.invalid">
-        <div *ngIf="articleImageUrl.errors && articleImageUrl.errors['required']">
-          Image URL is a mandatory field
-        </div>
-        <div *ngIf="articleImageUrl.errors && articleImageUrl.errors['pattern']">
-          Please enter a valid Image URL
-        </div>
+    
+      <div class="mb-3 form-check">
+        <label for="isOnSale" class="form-check-label">On Sale</label>
+        <input type="checkbox" class="form-check-input" id="isOnSale" name="articleIsOnSale" ngModel>
       </div>
+  
     </div>
   
-    <div class="article-isOnSale">
-      <label for="isOnSale">Is On Sale:</label>
-      <input type="checkbox" id="isOnSale" name="articleIsOnSale" ngModel>
-    </div>
-
-  </div>
-
-  <button type="submit">Submit</button>
-</form>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+  
+</div>

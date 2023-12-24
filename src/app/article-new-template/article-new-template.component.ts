@@ -25,7 +25,6 @@ export class ArticleNewTemplateComponent {
       console.log(this.article);
     } else {
       console.error('Article form is in an invalid state');
-
     }
   }
 

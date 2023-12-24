@@ -1,61 +1,69 @@
-<h2>Create furniture</h2>
+<div class="container mt-5">
 
-<div class="form-group">
-  <form [formGroup]="articleForm" (ngSubmit)="onSubmit()">
-    <div class="article-name">
-      <input type="text"
-             placeholder="Name"
-             name="name"
-             formControlName="name">
-      <div *ngIf="name?.invalid && (name?.dirty || name?.touched)">
-        <div *ngIf="name && name.hasError('required')">
-          Name is required
-        </div>
-        <div *ngIf="name && name.hasError('invalidName')">
-          Name cannot be Prova, Mock, Test or Fake
+  <h2>Create Furniture</h2>
+  
+  <div class="form-group">
+    <form [formGroup]="articleForm" (ngSubmit)="onSubmit()" >
+      <div class="mb-3">
+        <input type="text"
+               class="form-control"
+               placeholder="Name"
+               name="name"
+               formControlName="name">
+        <div *ngIf="name?.invalid && name?.dirty">
+          <div *ngIf="name && name.hasError('required')" class="errorMessage">
+            Name is required
+          </div>
+          <div *ngIf="name && name.hasError('invalidName')" class="errorMessage">
+            Name cannot be Prova, Mock, Test or Fake
+          </div>
         </div>
       </div>
-    </div>
-  
-    <div class="article-price">
-      <input type="number"
-             placeholder="Price"
-             name="price"
-             formControlName="price">
-      <div *ngIf="price?.invalid && (price?.dirty || price?.touched)">
-        <div *ngIf="price && price.hasError('required')">
-          Price is required
-        </div>
-        <div *ngIf="price && price.hasError('min')">
-          Price must be at least 0,1€
-        </div>
-      </div>
-    </div>
-  
-    <div class="article-imageUrl">
-      <input type="text"
-             placeholder="Image URL"
-             name="imageUrl"
-             formControlName="imageUrl">
-      <div *ngIf="imageUrl?.invalid && (imageUrl?.dirty || imageUrl?.touched)">
-        <div *ngIf="imageUrl && imageUrl.hasError('required')">
-          Image Url is required
-        </div>
-        <div *ngIf="imageUrl && imageUrl.hasError('pattern')">
-          Image does not match the pattern
+    
+      <div class="mb-3">
+        <input type="number"
+               class="form-control"
+               placeholder="Price"
+               name="price"
+               formControlName="price">
+        <div *ngIf="price?.invalid && price?.dirty">
+          <div *ngIf="price && price.hasError('required')" class="errorMessage">
+            Price is required
+          </div>
+          <div *ngIf="price && price.hasError('min')" class="errorMessage">
+            Price must be at least 0,1€
+          </div>
         </div>
       </div>
-    </div>
-  
-    <div class="article-isOnSale">
-      <label for="isOnSale">Is On Sale:</label>
-      <input type="checkbox"
-             id="isOnSale"
-             name="isOnSale"
-             formControlName="isOnSale">
-    </div>
-  
-  
-    <button type="submit">Submit</button>
-  </form>
+    
+      <div class="mb-3">
+        <input type="text"
+               class="form-control"
+               placeholder="Image URL"
+               name="imageUrl"
+               formControlName="imageUrl">
+        <div *ngIf="imageUrl?.invalid && imageUrl?.dirty">
+          <div *ngIf="imageUrl && imageUrl.hasError('required')" class="errorMessage">
+            Image Url is required
+          </div>
+          <div *ngIf="imageUrl && imageUrl.hasError('pattern')" class="errorMessage">
+            Image does not match the pattern
+          </div>
+        </div>
+      </div>
+    
+      <div class="mb-3 form-check">
+        <label for="isOnSale" class="form-check-label">On Sale</label>
+        <input type="checkbox"
+               class="form-check-input"
+               id="isOnSale"
+               name="isOnSale"
+               formControlName="isOnSale">
+      </div>
+    
+    
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
 </div>
+
