@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Article } from '../model/article';
+import { Observable, throwError as ObservableThrow, of as ObservableOf } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -15,8 +16,8 @@ export class ArticleServiceService {
     ];
   }
 
-  getArticles(): Article[] {
-    return this.articles;
+  getArticles(): Observable<Article[]> {
+    return ObservableOf(this.articles);
   }
 
   changeQuantity(articleObject: {article:Article, selectedQuantity: number, action:string}): void{

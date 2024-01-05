@@ -35,10 +35,10 @@ export class ArticleNewReactiveComponent {
   onSubmit() {
     if (this.articleForm.valid) {
       
-      const articleName: string = this.articleForm.value.name
-      const articleImage: string = this.articleForm.value.imageUrl
-      const articlePrice: number = this.articleForm.value.price
-      const articleIsOnSale: boolean = this.articleForm.value.isOnSale
+      const articleName: string = this.articleForm.value.name;
+      const articleImage: string = this.articleForm.value.imageUrl;
+      const articlePrice: number = this.articleForm.value.price;
+      const articleIsOnSale: boolean = this.articleForm.value.isOnSale;
 
       const createdArticle = new Article(articleName, articleImage, articlePrice, articleIsOnSale, 1);
 
