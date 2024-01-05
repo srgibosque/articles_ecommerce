@@ -1,5 +1,6 @@
 import { Article } from './../model/article';
 import { Component, OnInit } from '@angular/core';
+import { ArticleServiceService } from '../services/article-service.service';
 
 @Component({
   selector: 'app-article-list',
@@ -17,32 +18,17 @@ import { Component, OnInit } from '@angular/core';
   }`]
 })
 
-export class ArticleListComponent {
-  public articles!: Array<Article>;
+export class ArticleListComponent implements OnInit {
+  public articles!: Article[];
 
-  constructor() {}
+  constructor(private articleService: ArticleServiceService) {}
 
   ngOnInit(){
-    this.articles = [
-      new Article('Beige Chair', '../../assets/ChairBeige.jpg', 8.99, false, 3, 0),
-      new Article('Velvet Chair', '../../assets/velvetChair.jpg', 16.52, true, 5, 1),
-      new Article('Block Chair', '../../assets/BlockChair.jpg', 25.99, true, 2, 2)
-    ];
+    this.articles = this.articleService.getArticles();
   }
 
   onQuantityChange(articleObject: any){
-    
-    if(articleObject.action === "add"){
-      articleObject.article.quantityInChart += 1;
-      articleObject.article.isSubtractDisabled = articleObject.article.quantityInChart === 0;
-
-    } else if (articleObject.action === "subtract"){
-
-      if(articleObject.article.quantityInChart > 0){
-        articleObject.article.quantityInChart -= 1;
-        articleObject.article.isSubtractDisabled = articleObject.article.quantityInChart === 0;
-      }
-    }
+    this.articleService.changeQuantity(articleObject);
   }
 
 }

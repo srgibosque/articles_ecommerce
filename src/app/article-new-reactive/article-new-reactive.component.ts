@@ -1,7 +1,9 @@
+import { ArticleServiceService } from './../services/article-service.service';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Validators, FormBuilder } from '@angular/forms'; 
 import { nameArticleValidator } from './customValidator';
+import { Article } from './../model/article';
 
 @Component({
   selector: 'app-article-new-reactive',
@@ -11,7 +13,7 @@ import { nameArticleValidator } from './customValidator';
 export class ArticleNewReactiveComponent {
   public articleForm!: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private articleService: ArticleServiceService) {
     this.createForm();
   }
 
@@ -32,6 +34,16 @@ export class ArticleNewReactiveComponent {
 
   onSubmit() {
     if (this.articleForm.valid) {
+      
+      const articleName: string = this.articleForm.value.name
+      const articleImage: string = this.articleForm.value.imageUrl
+      const articlePrice: number = this.articleForm.value.price
+      const articleIsOnSale: boolean = this.articleForm.value.isOnSale
+
+      const createdArticle = new Article(articleName, articleImage, articlePrice, articleIsOnSale, 1);
+
+      this.articleService.create(createdArticle);
+
       console.log('articleForm values:', this.articleForm.value);
     } else {
       this.name?.markAsDirty();
