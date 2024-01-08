@@ -34,7 +34,7 @@ export class ArticleServiceService {
     }
   }
 
-  create(article: Article){
+  create(article: Article) {
     this.articles.push(article);
   }
 }

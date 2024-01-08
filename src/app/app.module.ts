@@ -10,7 +10,8 @@ import { ArticleNewTemplateComponent } from './article-new-template/article-new-
 import { ArticleNewReactiveComponent } from './article-new-reactive/article-new-reactive.component';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
-import { ArticleServiceService } from '../app/services/article-service.service'
+import { ArticleServiceService } from '../app/services/article-service.service';
+import { HttpClientModule } from '@angular/common/http';  
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { ArticleServiceService } from '../app/services/article-service.service'
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule,  
+    ReactiveFormsModule, 
+    HttpClientModule 
   ],
   providers: [
     ArticleServiceService,
