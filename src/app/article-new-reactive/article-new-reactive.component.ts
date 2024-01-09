@@ -42,7 +42,9 @@ export class ArticleNewReactiveComponent {
 
       const createdArticle = new Article(articleName, articleImage, articlePrice, articleIsOnSale, 1);
 
-      this.articleService.create(createdArticle);
+      this.articleService.create(createdArticle).subscribe((data) => {
+        console.log(data);
+      });
 
       console.log('articleForm values:', this.articleForm.value);
     } else {
