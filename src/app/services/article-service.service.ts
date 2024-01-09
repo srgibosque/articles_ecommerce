@@ -23,7 +23,7 @@ export class ArticleServiceService {
 
   changeQuantity(change: {article:Article, changeInQuantity: number}): void{
     const article = this.articles.find(({ id }) => change.article.id === id);
-    article!.quantityInChart! += change.changeInQuantity;
+    article!.quantityInCart! += change.changeInQuantity;
   }
   
   create(article: Article): Observable<any> {

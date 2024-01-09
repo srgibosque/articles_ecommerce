@@ -20,7 +20,7 @@ export class ArticleItemComponent {
   }
 
   decrementInCart() {
-    if (this.article.quantityInChart! > 0) {
+    if (this.article.quantityInCart! > 0) {
       this.articleQuantityChange.emit({ article: this.article, changeInQuantity: -1 });
     }
   }

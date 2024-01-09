@@ -3,7 +3,7 @@ export class Article {
     public name: string,
     public imageUrl: string,
     public price: number,
-    public isOnSales: boolean,
-    public quantityInChart?: number,
+    public isOnSale: boolean,
+    public quantityInCart?: number,
     public id?: number) {}
 }

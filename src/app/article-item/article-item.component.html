@@ -1,15 +1,15 @@
-<div class="container-article" [class]="article.isOnSales ? 'container-article' : 'container-article-noStock'">
+<div class="container-article" [class]="article.isOnSale ? 'container-article' : 'container-article-noStock'">
   <img src="{{article.imageUrl}}" alt="image">
 
   <div class="container-info">
     <p class="name">{{ article.name }}</p>
-    <p [ngClass] = "{'not-on-sale': !article.isOnSales}">{{ article.price }} €</p>
+    <p [ngClass] = "{'not-on-sale': !article.isOnSale}">{{ article.price }} €</p>
   </div>
 
-  <div class="container-buttons" *ngIf="article.isOnSales">
-    <button *ngIf="article.quantityInChart! > 0" 
+  <div class="container-buttons" *ngIf="article.isOnSale">
+    <button *ngIf="article.quantityInCart! > 0" 
             (click)="decrementInCart()">-</button>
-    <p>{{ article.quantityInChart }}</p>
+    <p>{{ article.quantityInCart }}</p>
     <button (click)="incrementInCart()">+</button>
   </div>
 </div>
