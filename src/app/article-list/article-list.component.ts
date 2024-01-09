@@ -1,4 +1,5 @@
 import { Article } from './../model/article';
+import { ArticleQuantityChange } from './../model/ArticleQuantityChange';
 import { Component, OnInit } from '@angular/core';
 import { ArticleServiceService } from '../services/article-service.service';
 import { Observable } from 'rxjs';
@@ -31,8 +32,12 @@ export class ArticleListComponent implements OnInit {
     this.articles$= this.articleService.getArticles();
   }
 
-  onQuantityChange(articleObject: any){
-    this.articleService.changeQuantity(articleObject);
+  // onQuantityChange(articleObject: any){
+  //   this.articleService.changeQuantity(articleObject);
+  // }
+
+  onQuantityChange(change: ArticleQuantityChange) {
+    this.articleService.changeQuantity(change);
   }
 
 }

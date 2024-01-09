@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, EventEmitter, Output, ChangeDetectionStrategy } from '@angular/core';
 import { Article } from '../../app/model/article';
+import { ArticleQuantityChange } from './../model/ArticleQuantityChange';
 
 @Component({
   selector: 'app-article-item',
@@ -8,40 +9,28 @@ import { Article } from '../../app/model/article';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 
-export class ArticleItemComponent implements OnInit {
+export class ArticleItemComponent {
   @Input() public article!: Article;
+  @Output() public articleQuantityChange: EventEmitter<ArticleQuantityChange> = new EventEmitter();
 
   constructor() {}
 
-  ngOnInit(){
-    // this.updateSubtractButtonState();
+  // onArticleQuantityChange(action: string){
+  //   this.articleQuantityChange.emit({
+  //     article: this.article,
+  //     selectedQuantity: this.article.quantityInChart,
+  //     action: action
+  //   })
+  // }
+
+  incrementInCart() {
+    this.articleQuantityChange.emit({ article: this.article, changeInQuantity: 1 });
   }
 
-  @Output() articleQuantityChange = new EventEmitter<Object>();
-
-  onArticleQuantityChange(action: string){
-    this.articleQuantityChange.emit({
-      article: this.article,
-      selectedQuantity: this.article.quantityInChart,
-      action: action
-    })
+  decrementInCart() {
+    if (this.article.quantityInChart! > 0) {
+      this.articleQuantityChange.emit({ article: this.article, changeInQuantity: -1 });
+    }
   }
-
-
-  // addQuantity(): void{
-  //   this.article.quantityInChart = this.article.quantityInChart + 1;
-  //   this.updateSubtractButtonState();
-  // }
-
-  // subtractQuantity(): void{
-  //   if(this.article.quantityInChart > 0){
-  //     this.article.quantityInChart = this.article.quantityInChart - 1;
-  //     this.updateSubtractButtonState();
-  //   }
-  // }
-
-  // private updateSubtractButtonState(): void {
-  //   this.isSubtractDisabled = this.article.quantityInChart === 0;
-  // }
 
 }
