@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, EventEmitter, Output, ChangeDetectionStrategy } from '@angular/core';
 import { Article } from '../../app/model/article';
-import { ArticleQuantityChange } from './../model/ArticleQuantityChange';
+import { ArticleQuantityChange } from './../model/articleQuantityChange';
 
 @Component({
   selector: 'app-article-item',
@@ -14,14 +14,6 @@ export class ArticleItemComponent {
   @Output() public articleQuantityChange: EventEmitter<ArticleQuantityChange> = new EventEmitter();
 
   constructor() {}
-
-  // onArticleQuantityChange(action: string){
-  //   this.articleQuantityChange.emit({
-  //     article: this.article,
-  //     selectedQuantity: this.article.quantityInChart,
-  //     action: action
-  //   })
-  // }
 
   incrementInCart() {
     this.articleQuantityChange.emit({ article: this.article, changeInQuantity: 1 });

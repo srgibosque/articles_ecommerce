@@ -5,6 +5,5 @@ export class Article {
     public price: number,
     public isOnSales: boolean,
     public quantityInChart?: number,
-    public id?: number,
-    public isSubtractDisabled: boolean = false) {}
+    public id?: number) {}
 }
