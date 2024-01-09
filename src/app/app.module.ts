@@ -11,7 +11,8 @@ import { ArticleNewReactiveComponent } from './article-new-reactive/article-new-
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ArticleServiceService } from '../app/services/article-service.service';
-import { HttpClientModule } from '@angular/common/http';  
+import { HttpClientModule } from '@angular/common/http';
+import { MoneyFormatPipe } from './pipes/money-format.pipe';  
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { HttpClientModule } from '@angular/common/http';
     ArticleListComponent,
     NavbarComponent,
     ArticleNewTemplateComponent,
-    ArticleNewReactiveComponent
+    ArticleNewReactiveComponent,
+    MoneyFormatPipe
   ],
   imports: [
     BrowserModule,

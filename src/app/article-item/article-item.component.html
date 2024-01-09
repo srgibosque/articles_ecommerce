@@ -3,7 +3,7 @@
 
   <div class="container-info">
     <p class="name">{{ article.name }}</p>
-    <p [ngClass] = "{'not-on-sale': !article.isOnSale}">{{ article.price }} €</p>
+    <p [ngClass] = "{'not-on-sale': !article.isOnSale}">{{ article.price | moneyFormat }}</p>
   </div>
 
   <div class="container-buttons" *ngIf="article.isOnSale">
