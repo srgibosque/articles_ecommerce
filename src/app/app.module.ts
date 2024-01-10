@@ -12,7 +12,8 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ArticleServiceService } from '../app/services/article-service.service';
 import { HttpClientModule } from '@angular/common/http';
-import { MoneyFormatPipe } from './pipes/money-format.pipe';  
+import { MoneyFormatPipe } from './pipes/money-format.pipe';
+import { DefaultImgPipe } from './services/default-img.pipe';  
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { MoneyFormatPipe } from './pipes/money-format.pipe';
     NavbarComponent,
     ArticleNewTemplateComponent,
     ArticleNewReactiveComponent,
-    MoneyFormatPipe
+    MoneyFormatPipe,
+    DefaultImgPipe
   ],
   imports: [
     BrowserModule,
