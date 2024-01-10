@@ -1,2 +1,9 @@
-
+<input type="text" [(ngModel)] = "filteredName"> 
+<div class="article-list-container">
+  <app-article-item 
+  *ngFor = "let article of articles$ | async"
+  [article] = "article" 
+  (articleQuantityChange) = "onQuantityChange($event)">
+  </app-article-item>
+</div>
 

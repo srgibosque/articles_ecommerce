@@ -13,7 +13,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ArticleServiceService } from '../app/services/article-service.service';
 import { HttpClientModule } from '@angular/common/http';
 import { MoneyFormatPipe } from './pipes/money-format.pipe';
-import { DefaultImgPipe } from './services/default-img.pipe';  
+import { DefaultImgPipe } from './pipes/default-img.pipe';
+import { TextFilterPipe } from './pipes/text-filter.pipe';  
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { DefaultImgPipe } from './services/default-img.pipe';
     ArticleNewTemplateComponent,
     ArticleNewReactiveComponent,
     MoneyFormatPipe,
-    DefaultImgPipe
+    DefaultImgPipe,
+    TextFilterPipe
   ],
   imports: [
     BrowserModule,

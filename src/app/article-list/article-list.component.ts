@@ -8,23 +8,14 @@ import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-article-list',
-  template: `
-  <div class="article-list-container">
-    <app-article-item 
-    *ngFor = "let article of articles$ | async"
-    [article] = "article" 
-    (articleQuantityChange) = "onQuantityChange($event)">
-    </app-article-item>
-  </div>`,
-  styles: [`.article-list-container{
-    display: flex;
-    margin: 24px;
-  }`]
+  templateUrl: './article-list.component.html',
+  styleUrl: './article-list.component.css'
 })
 
 export class ArticleListComponent implements OnInit {
   // public articles!: Article[];
   public articles$!: Observable<Article[]>;
+  public filteredName = '';
 
   constructor(private articleService: ArticleServiceService) {}
 
@@ -33,7 +24,11 @@ export class ArticleListComponent implements OnInit {
   }
 
   onQuantityChange(change: ArticleQuantityChange) {
-    this.articleService.changeQuantity(change);
+    console.log(change.article.id);
+    console.log(change.changeInQuantity);
+    this.articleService.changeQuantity(change.article.id!, change.changeInQuantity).subscribe((article) => {
+      article.quantityInCart += change.changeInQuantity;
+    });
   }
 
 }

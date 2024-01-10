@@ -21,9 +21,13 @@ export class ArticleServiceService {
     return this.http.get('/api/articles');
   }
 
-  changeQuantity(change: {article:Article, changeInQuantity: number}): void{
-    const article = this.articles.find(({ id }) => change.article.id === id);
-    article!.quantityInCart! += change.changeInQuantity;
+  // changeQuantity(change: {article:Article, changeInQuantity: number}): void{
+  //   const article = this.articles.find(({ id }) => change.article.id === id);
+  //   article!.quantityInCart! += change.changeInQuantity;
+  // }
+
+  changeQuantity(id:number, changeInQuantity:number): Observable<any>{
+    return this.http.patch('/api/articles/' + id.toString(), {changeInQuantity}); 
   }
   
   create(article: Article): Observable<any> {
