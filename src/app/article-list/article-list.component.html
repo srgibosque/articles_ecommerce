@@ -1,4 +1,4 @@
-<input type="text" [(ngModel)] = "filteredName"> 
+<!-- <input type="text" [formControl]="searchControl" placeholder="Search by article name" /> -->
 <div class="article-list-container">
   <app-article-item 
   *ngFor = "let article of articles$ | async"
