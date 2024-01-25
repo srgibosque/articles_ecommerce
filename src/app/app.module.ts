@@ -15,13 +15,15 @@ import { ArticleNewReactiveComponent } from './article-new-reactive/article-new-
 import { ArticleServiceService } from '../app/services/article-service.service';
 import { MoneyFormatPipe } from './pipes/money-format.pipe';
 import { DefaultImgPipe } from './pipes/default-img.pipe';
-import { TextFilterPipe } from './pipes/text-filter.pipe'; 
+import { TextFilterPipe } from './pipes/text-filter.pipe';
+import { LoginComponent } from './login/login.component'; 
 
 const appRoutes: Routes = [
   {path: '', component: ArticleListComponent },
   {path: 'articles', component: ArticleListComponent },
   {path: 'templateForm', component: ArticleNewTemplateComponent },
-  {path: 'reactiveForm', component: ArticleNewReactiveComponent }
+  {path: 'reactiveForm', component: ArticleNewReactiveComponent },
+  {path: 'loginForm', component: LoginComponent }
 ];
 
 @NgModule({
@@ -34,7 +36,8 @@ const appRoutes: Routes = [
     ArticleNewReactiveComponent,
     MoneyFormatPipe,
     DefaultImgPipe,
-    TextFilterPipe
+    TextFilterPipe,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
