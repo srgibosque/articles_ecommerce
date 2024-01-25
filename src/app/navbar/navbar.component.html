@@ -1,31 +1,42 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
-    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-      <li class="nav-item" 
-          routerLinkActive = "active"
-          [routerLinkActiveOptions] = "{exact: true}">
-          <a class="nav-link" routerLink= "/">Inicio</a>
-      </li>
+    <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
 
-      <li class="nav-item" 
-          routerLinkActive = "active">
-          <a class="nav-link" routerLink= "/articles">Artículos</a>
-      </li>
+      <div class="nav-section">
+        <li class="nav-item" 
+            routerLinkActive = "active"
+            [routerLinkActiveOptions] = "{exact: true}">
+            <a class="nav-link" routerLink= "/">Inicio</a>
+        </li>
+  
+        <li class="nav-item" 
+            routerLinkActive = "active">
+            <a class="nav-link" routerLink= "/articles">Artículos</a>
+        </li>
+  
+        <li class="nav-item" 
+            routerLinkActive = "active">
+            <a class="nav-link" routerLink= "/templateForm">Nuevo artículo template</a>
+        </li>
+  
+        <li class="nav-item" 
+            routerLinkActive = "active">
+            <a class="nav-link" routerLink= "/reactiveForm">Nuevo artículo reactivo</a>
+        </li>
+      </div>
 
-      <li class="nav-item" 
-          routerLinkActive = "active">
-          <a class="nav-link" routerLink= "/templateForm">Nuevo artículo template</a>
-      </li>
-
-      <li class="nav-item" 
-          routerLinkActive = "active">
-          <a class="nav-link" routerLink= "/reactiveForm">Nuevo artículo reactivo</a>
-      </li>
-
-      <li class="nav-item" 
-          routerLinkActive = "active">
-          <a class="nav-link" routerLink= "/loginForm">Login</a>
-      </li>
+      <div class="nav-section">
+        <li class="nav-item" 
+            routerLinkActive = "active">
+            <a class="nav-link" routerLink= "/login">Login</a>
+        </li>
+  
+        <li class="nav-item" 
+            routerLinkActive = "active">
+            <a class="nav-link" routerLink= "/register">Register</a>
+        </li>
+      </div>
+      
     </ul>   
   </div>
 </nav>

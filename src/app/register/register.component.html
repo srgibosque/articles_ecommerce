@@ -1,0 +1,39 @@
+<div class="container mt-5">
+
+  <h2>Register</h2>
+  
+  <div class="form-group">
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" >
+
+      <div class="mb-3">
+        <input type="text"
+               class="form-control"
+               placeholder="Username"
+               name="username"
+               formControlName="username">
+        <div *ngIf="username?.invalid && username?.dirty">
+          <div *ngIf="username && username.hasError('required')" class="errorMessage">
+            Username is required
+          </div>
+        </div>
+      </div>
+    
+      <div class="mb-3">
+        <input type="password"
+               class="form-control"
+               placeholder="Password"
+               name="password"
+               formControlName="password">
+        <div *ngIf="password?.invalid && password?.dirty">
+          <div *ngIf="password && password.hasError('required')" class="errorMessage">
+            Password is required
+          </div>
+        </div>
+      </div>
+    
+      <button type="submit" class="btn btn-primary">Submit</button>
+
+    </form>
+  </div>
+</div>
+
