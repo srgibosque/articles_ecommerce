@@ -1,5 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { RouterModule, Routes } from '@angular/router';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -8,13 +12,17 @@ import { ArticleListComponent } from './article-list/article-list.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ArticleNewTemplateComponent } from './article-new-template/article-new-template.component';
 import { ArticleNewReactiveComponent } from './article-new-reactive/article-new-reactive.component';
-import { FormsModule } from '@angular/forms';
-import { ReactiveFormsModule } from '@angular/forms';
 import { ArticleServiceService } from '../app/services/article-service.service';
-import { HttpClientModule } from '@angular/common/http';
 import { MoneyFormatPipe } from './pipes/money-format.pipe';
 import { DefaultImgPipe } from './pipes/default-img.pipe';
-import { TextFilterPipe } from './pipes/text-filter.pipe';  
+import { TextFilterPipe } from './pipes/text-filter.pipe'; 
+
+const appRoutes: Routes = [
+  {path: '', component: ArticleListComponent },
+  {path: 'articles', component: ArticleListComponent },
+  {path: 'templateForm', component: ArticleNewTemplateComponent },
+  {path: 'reactiveForm', component: ArticleNewReactiveComponent }
+];
 
 @NgModule({
   declarations: [
@@ -33,7 +41,8 @@ import { TextFilterPipe } from './pipes/text-filter.pipe';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule, 
-    HttpClientModule 
+    HttpClientModule,
+    RouterModule.forRoot(appRoutes) // Register our routes to our angular app.
   ],
   providers: [
     ArticleServiceService,

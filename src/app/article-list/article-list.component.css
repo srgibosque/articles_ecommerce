@@ -1,4 +1,12 @@
 .article-list-container{
   display: flex;
+  flex-wrap: wrap;
   margin: 24px;
+}
+
+.search {
+  margin-top: 20px;
+  display: flex;
+  justify-content:center;
+  align-items: center;
 }

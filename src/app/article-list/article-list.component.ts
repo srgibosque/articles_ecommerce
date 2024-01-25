@@ -1,42 +1,54 @@
-import { Article } from './../model/article';
-import { ArticleQuantityChange } from './../model/articleQuantityChange';
-import { Component, OnInit } from '@angular/core';
-import { ArticleServiceService } from '../services/article-service.service';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
-import { takeUntil, switchMap } from 'rxjs/operators';
-
+import { debounceTime, switchMap,
+  distinctUntilChanged, startWith, merge,
+  share } from 'rxjs/operators';
+  
+  import { Article } from './../model/article';
+  import { ArticleQuantityChange } from './../model/articleQuantityChange';
+  import { ArticleServiceService } from '../services/article-service.service';
 
 @Component({
   selector: 'app-article-list',
   templateUrl: './article-list.component.html',
-  styleUrl: './article-list.component.css'
+  styleUrl: './article-list.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 
 export class ArticleListComponent implements OnInit {
 
   public articles$!: Observable<Article[]>;
-  private destroy$ = new Subject<void>();
+  
+  public searchString: string = '';
+  private searchTerms: Subject<string> = new Subject();
+  private reloadArticleList : Subject <void> = new Subject();
 
   constructor(private articleService: ArticleServiceService) {}
 
   ngOnInit() {
-    this.articles$ = this.articleService.getArticles();
+    this.articles$ = this.searchTerms.pipe(
+      startWith(this.searchString),
+      debounceTime(500),
+      distinctUntilChanged(),
+      merge(this.reloadArticleList),
+      switchMap((q) => this.articleService.getArticles(this.searchString)));
   }
-
-  ngOnDestroy() {
-    this.destroy$.next();
-    this.destroy$.complete();
-  }
+   
 
   onQuantityChange(change: ArticleQuantityChange) {
     this.articleService.changeQuantity(change.article.id!, change.changeInQuantity)
-      .pipe(
-        switchMap(() => this.articleService.getArticles()),
-        takeUntil(this.destroy$)
-      )
-      .subscribe((articles) => {
-        this.articles$ = this.articleService.getArticles();
+      .subscribe((res) => {
+        console.log(res.msg);
+        this.reloadArticleList.next();
       });
+  }
+
+  search() {
+    this.searchTerms.next(this.searchString);
+  }
+
+  onNew() {
+    this.reloadArticleList.next();
   }
 
 }

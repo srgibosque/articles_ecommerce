@@ -1,4 +1,12 @@
-<!-- <input type="text" [formControl]="searchControl" placeholder="Search by article name" /> -->
+<div class="search">
+  <input
+    type="text" 
+    name="searchBox"
+    [(ngModel)]="searchString"
+    placeholder="Search Here"
+    (keyup)="search()">
+</div>
+
 <div class="article-list-container">
   <app-article-item 
   *ngFor = "let article of articles$ | async"
