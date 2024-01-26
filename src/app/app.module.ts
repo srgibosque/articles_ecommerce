@@ -17,11 +17,13 @@ import { MoneyFormatPipe } from './pipes/money-format.pipe';
 import { DefaultImgPipe } from './pipes/default-img.pipe';
 import { TextFilterPipe } from './pipes/text-filter.pipe';
 import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component'; 
+import { RegisterComponent } from './register/register.component';
+import { ArticleDetailComponent } from './article-detail/article-detail.component'; 
 
 const appRoutes: Routes = [
   {path: '', component: ArticleListComponent },
-  {path: 'articles', component: ArticleListComponent },
+  {path: 'articles', component: ArticleListComponent},
+  {path: 'articles/:id', component: ArticleDetailComponent},
   {path: 'templateForm', component: ArticleNewTemplateComponent },
   {path: 'reactiveForm', component: ArticleNewReactiveComponent },
   {path: 'login', component: LoginComponent },
@@ -40,7 +42,8 @@ const appRoutes: Routes = [
     DefaultImgPipe,
     TextFilterPipe,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    ArticleDetailComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,6 @@
+<img *ngIf="article" [src]="article.imageUrl | defaultImg" alt="Article Image">
+<p>ID is: {{ id }}</p>
+<p>{{article?.name}}</p>
+<p>{{article?.price}}</p>
+<p>{{article?.isOnSale}}</p>
+<p>{{article?.quantityInCart}}</p>
