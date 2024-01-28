@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
+import { User } from '../model/user';
+import { RegisterResponse } from '../model/registerResponse';
+import { UserService } from '../services/user.service';
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -9,7 +13,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 export class RegisterComponent {
   public registerForm!: FormGroup;
 
-  constructor(private fb: FormBuilder){}
+  constructor(private fb: FormBuilder, private userService: UserService){}
 
   get username() { return this.registerForm.get('username'); }
 
@@ -25,6 +29,14 @@ export class RegisterComponent {
   onSubmit(){
     if (this.registerForm.valid){
       console.log(this.registerForm.value);
+
+      const registeredUser: User = this.registerForm.value;
+
+      this.userService.register(registeredUser)
+        .subscribe((res:RegisterResponse) => {
+          const message = res.msg;
+          console.log(message);
+        })
 
     } else {
       console.log("Invalid form");

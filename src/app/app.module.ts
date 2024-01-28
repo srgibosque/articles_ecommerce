@@ -13,6 +13,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { ArticleNewTemplateComponent } from './article-new-template/article-new-template.component';
 import { ArticleNewReactiveComponent } from './article-new-reactive/article-new-reactive.component';
 import { ArticleServiceService } from '../app/services/article-service.service';
+import { UserService } from './services/user.service';
 import { MoneyFormatPipe } from './pipes/money-format.pipe';
 import { DefaultImgPipe } from './pipes/default-img.pipe';
 import { TextFilterPipe } from './pipes/text-filter.pipe';
@@ -55,6 +56,7 @@ const appRoutes: Routes = [
   ],
   providers: [
     ArticleServiceService,
+    UserService,
     provideClientHydration()
   ],
   bootstrap: [AppComponent]

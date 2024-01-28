@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
+import { User } from '../model/user';
+import { loginResponse } from '../model/loginResponse';
+import { UserService } from '../services/user.service';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -10,7 +14,7 @@ export class LoginComponent implements OnInit {
   
   public loginForm!: FormGroup;
 
-  constructor(private fb: FormBuilder){}
+  constructor(private fb: FormBuilder, private userService: UserService){}
 
   get username() { return this.loginForm.get('username'); }
 
@@ -26,6 +30,16 @@ export class LoginComponent implements OnInit {
   onSubmit(){
     if (this.loginForm.valid){
       console.log(this.loginForm.value);
+
+      const loginUser: User = this.loginForm.value;
+
+      this.userService.login(loginUser)
+        .subscribe((res:loginResponse) => {
+          const message = res.msg;
+          const token = res.token;
+          console.log(message);
+          console.log(token);
+        })
 
     } else {
       console.log("Invalid form");
