@@ -16,15 +16,16 @@ export class ArticleAppService implements HttpInterceptor {
   ): Observable<HttpEvent<any>> {
 
     const token = this.userStore.getToken();
-    console.log(request);
     if(token === undefined){
       return next.handle(request);
-    }else{
+
+    } else {
       const modifiedRequest = request.clone({
         setHeaders: {
-          'Authorization': 'Bearer ' + token,
+          'Authorization': token,
         },
       });
+      // console.log(modifiedRequest.headers.get('authorization'));
       return next.handle(modifiedRequest);
     }
    

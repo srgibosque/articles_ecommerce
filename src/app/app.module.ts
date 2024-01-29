@@ -21,10 +21,11 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ArticleDetailComponent } from './article-detail/article-detail.component'; 
 import { ArticleAppService } from './interceptors/article-app.service';
+import { AuthGuardService } from './services/auth-guard.service';
 
 const appRoutes: Routes = [
   {path: '', component: ArticleListComponent },
-  {path: 'articles', component: ArticleListComponent},
+  {path: 'articles', canActivate: [AuthGuardService], component: ArticleListComponent},
   {path: 'articles/:id', component: ArticleDetailComponent},
   {path: 'templateForm', component: ArticleNewTemplateComponent },
   {path: 'reactiveForm', component: ArticleNewReactiveComponent },
@@ -58,6 +59,7 @@ const appRoutes: Routes = [
   providers: [
     ArticleServiceService,
     UserService,
+    AuthGuardService,
     provideClientHydration(),
     {
       provide: HTTP_INTERCEPTORS,

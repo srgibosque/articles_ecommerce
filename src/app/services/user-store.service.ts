@@ -10,10 +10,17 @@ export class UserStoreService {
 
   saveToken(token : string): void {
     this.token = token;
-    console.log(this.token);
   }
 
   getToken(): string {
     return this.token;
+  }
+
+  isUserLoggedIn(): boolean {
+    if(this.token === undefined){
+      return false;
+    } else {
+      return true;
+    }
   }
 }
