@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule,HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -20,6 +20,7 @@ import { TextFilterPipe } from './pipes/text-filter.pipe';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ArticleDetailComponent } from './article-detail/article-detail.component'; 
+import { ArticleAppService } from './interceptors/article-app.service';
 
 const appRoutes: Routes = [
   {path: '', component: ArticleListComponent },
@@ -57,7 +58,12 @@ const appRoutes: Routes = [
   providers: [
     ArticleServiceService,
     UserService,
-    provideClientHydration()
+    provideClientHydration(),
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ArticleAppService,
+      multi: true,
+    },
   ],
   bootstrap: [AppComponent]
 })

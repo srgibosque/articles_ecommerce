@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 import { Article } from '../model/article';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { ArticleAppService } from '../interceptors/article-app.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ArticleServiceService {
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private articleApp: ArticleAppService) {
   }
 
   getArticles(query?: string): Observable<Article[]> {

@@ -4,6 +4,8 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { User } from '../model/user';
 import { loginResponse } from '../model/loginResponse';
 import { UserService } from '../services/user.service';
+import { UserStoreService } from '../services/user-store.service';
+
 
 @Component({
   selector: 'app-login',
@@ -14,7 +16,7 @@ export class LoginComponent implements OnInit {
   
   public loginForm!: FormGroup;
 
-  constructor(private fb: FormBuilder, private userService: UserService){}
+  constructor(private fb: FormBuilder, private userService: UserService, private userStoreService: UserStoreService){}
 
   get username() { return this.loginForm.get('username'); }
 
@@ -36,9 +38,8 @@ export class LoginComponent implements OnInit {
       this.userService.login(loginUser)
         .subscribe((res:loginResponse) => {
           const message = res.msg;
-          const token = res.token;
+          const token = this.userStoreService.saveToken(res.token);
           console.log(message);
-          console.log(token);
         })
 
     } else {
