@@ -10,6 +10,7 @@ export class UserStoreService {
 
   saveToken(token : string): void {
     this.token = token;
+    localStorage.setItem('token', this.token );
   }
 
   getToken(): string {
@@ -17,10 +18,15 @@ export class UserStoreService {
   }
 
   isUserLoggedIn(): boolean {
-    if(this.token === undefined){
-      return false;
+    if (typeof localStorage !== 'undefined'){
+      this.token = localStorage.getItem('token') ?? '';
+      if(this.token === undefined || this.token === '') {
+        return false;
+      } else {
+        return true;
+      }
     } else {
-      return true;
+      return false;
     }
   }
 }
