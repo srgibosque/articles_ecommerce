@@ -3,7 +3,6 @@ import { BrowserModule, provideClientHydration } from '@angular/platform-browser
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule,HTTP_INTERCEPTORS } from '@angular/common/http';
-import { RouterModule, Routes } from '@angular/router';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -23,15 +22,6 @@ import { ArticleDetailComponent } from './article-detail/article-detail.componen
 import { ArticleAppService } from './interceptors/article-app.service';
 import { AuthGuardService } from './services/auth-guard.service';
 
-const appRoutes: Routes = [
-  {path: '', component: ArticleListComponent },
-  {path: 'articles', canActivate: [AuthGuardService], component: ArticleListComponent},
-  {path: 'articles/:id', component: ArticleDetailComponent},
-  {path: 'templateForm', component: ArticleNewTemplateComponent },
-  {path: 'reactiveForm', component: ArticleNewReactiveComponent },
-  {path: 'login', component: LoginComponent },
-  {path: 'register', component: RegisterComponent }
-];
 
 @NgModule({
   declarations: [
@@ -54,7 +44,7 @@ const appRoutes: Routes = [
     FormsModule,
     ReactiveFormsModule, 
     HttpClientModule,
-    RouterModule.forRoot(appRoutes) // Register our routes to our angular app.
+    AppRoutingModule,
   ],
   providers: [
     ArticleServiceService,
