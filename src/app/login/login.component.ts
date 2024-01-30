@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 import { User } from '../model/user';
 import { loginResponse } from '../model/loginResponse';
@@ -16,7 +17,7 @@ export class LoginComponent implements OnInit {
   
   public loginForm!: FormGroup;
 
-  constructor(private fb: FormBuilder, private userService: UserService, private userStoreService: UserStoreService){}
+  constructor(private fb: FormBuilder, private userService: UserService, private userStoreService: UserStoreService, private router: Router){}
 
   get username() { return this.loginForm.get('username'); }
 
@@ -40,6 +41,7 @@ export class LoginComponent implements OnInit {
           const message = res.msg;
           const token = this.userStoreService.saveToken(res.token);
           console.log(message);
+          this.router.navigate(['/articles', 'list']);
         })
 
     } else {
