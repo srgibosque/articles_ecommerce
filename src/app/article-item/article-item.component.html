@@ -1,6 +1,6 @@
 <div class="container-article" [class]="article.isOnSale ? 'container-article' : 'container-article-noStock'">
   <a [routerLink] = "['/articles', article.id]">
-    <img src="{{article.imageUrl | defaultImg}}" alt="image">
+    <img src="{{article.imageUrl | defaultImg}}" alt="img">
   </a>
 
   <div class="container-info">
